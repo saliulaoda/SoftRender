@@ -1,0 +1,8 @@
+
+obj/
+bin/
+*.csproj
+*.sln
+*.obj
+*.exe
+*.pdb
