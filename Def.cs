@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Drawing;
 
 namespace SoftRender_Windows
 {
@@ -33,7 +34,7 @@ namespace SoftRender_Windows
                 mesh[i] = new vertex_t();
                 mesh[i].pos = new vector_t(meshData_Box[i,0], meshData_Box[i,1], meshData_Box[i,2], meshData_Box[i,3]);
                 mesh[i].tc = new texcoord_t(meshData_Box[i, 4], meshData_Box[i, 5]);
-                mesh[i].color = new color_t((int)(meshData_Box[i, 6]*255), (int)(meshData_Box[i, 7] * 255), (int)(meshData_Box[i, 8] * 255));
+                mesh[i].color = Color.FromArgb((int)(meshData_Box[i, 6]*255), (int)(meshData_Box[i, 7] * 255), (int)(meshData_Box[i, 8] * 255));
                 mesh[i].rhw = meshData_Box[i,9];
             }
         }
@@ -75,7 +76,7 @@ namespace SoftRender_Windows
     {
         public vector_t pos;
         public texcoord_t tc;
-        public color_t color;
+        public Color color;
         public float rhw;
     }
 
@@ -131,7 +132,7 @@ namespace SoftRender_Windows
             float qcos = (float)Math.Cos(theta * 0.5f);
             vector_t vec = new vector_t( x, y, z, 1f);
             float w = qcos;
-            MathTool.vector_normalize(vec);
+            Tools.vector_normalize(vec);
             x = vec.x * qsin;
             y = vec.y * qsin;
             z = vec.z * qsin;
@@ -161,17 +162,6 @@ namespace SoftRender_Windows
                 }
                 Console.WriteLine(_tmpStr);
             }
-        }
-    }
-
-    class color_t
-    {
-        public int r;
-        public int g;
-        public int b;
-        public color_t(int _r, int _g, int _b)
-        {
-            r = _r; g = _g; b = _b;
         }
     }
 
@@ -207,8 +197,8 @@ namespace SoftRender_Windows
 
         public void UpdateTransform()
         {
-            matrix_t _tmp = MathTool.matrix_mul(world, view);
-            transform = MathTool.matrix_mul(_tmp, projection);
+            matrix_t _tmp = Tools.matrix_mul(world, view);
+            transform = Tools.matrix_mul(_tmp, projection);
         }
 
         

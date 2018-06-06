@@ -7,11 +7,16 @@ using System.Diagnostics;
 
 namespace SoftRender_Windows
 {
-    class MathTool
+    class Tools
     {
         public static int CMID(int x, int min, int max) { return (x < min) ? min : ((x > max) ? max : x); }
 
         public static float CMID_F(float x, float min, float max) { return (x < min) ? min : ((x > max) ? max : x); }
+
+        public static void Swap(ref int a, ref int b)
+        {
+            int _tmp = a; a = b; b = _tmp;
+        }
 
         #region vector operation
         // | v |
@@ -64,6 +69,16 @@ namespace SoftRender_Windows
             }
             return v;
         }
+
+        public static float Triangle_Acreage_2D(point_t p1, point_t p2, point_t p3)
+        {
+            float _tmp = 0f;
+            vector_t _vec1_2 = new vector_t(p2.x - p1.x, p2.y - p1.y, 0, 0);
+            vector_t _vec1_3 = new vector_t(p3.x - p1.x, p3.y - p1.y, 0, 0);
+            _tmp = Tools.vector_length(Tools.vector_crossproduct(_vec1_2, _vec1_3)) / 2;
+            return Math.Abs(_tmp);
+        }
+
         #endregion
 
         #region matrix_t operation

@@ -37,7 +37,7 @@ namespace SoftRender_Windows
 
         private void buttonLeft_Click(object sender, EventArgs e)
         {
-            vector_t _newRotate = new vector_t(mDevice.mRotateVector.x, mDevice.mRotateVector.y, MathTool.CMID_F(mDevice.mRotateVector.z + 0.1f, -1f, 1f), mDevice.mRotateVector.w);
+            vector_t _newRotate = new vector_t(mDevice.mRotateVector.x, mDevice.mRotateVector.y, Tools.CMID_F(mDevice.mRotateVector.z + 0.1f, -1f, 1f), mDevice.mRotateVector.w);
             mDevice.mRotateVector = _newRotate;
             mDevice.ResetFrameBuffer();
             mDevice.DrawBox();
@@ -46,7 +46,7 @@ namespace SoftRender_Windows
 
         private void buttonRight_Click(object sender, EventArgs e)
         {
-            vector_t _newRotate = new vector_t(mDevice.mRotateVector.x, mDevice.mRotateVector.y, MathTool.CMID_F(mDevice.mRotateVector.z - 0.1f, -1f, 1f), mDevice.mRotateVector.w);
+            vector_t _newRotate = new vector_t(mDevice.mRotateVector.x, mDevice.mRotateVector.y, Tools.CMID_F(mDevice.mRotateVector.z - 0.1f, -1f, 1f), mDevice.mRotateVector.w);
             mDevice.mRotateVector = _newRotate;
             mDevice.ResetFrameBuffer();
             mDevice.DrawBox();
